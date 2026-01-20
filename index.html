@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>   
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 :root{
- --bg1:#e68fac ;
+ --bg1:#e68fac;
  --bg2:#6A1B1A;
  --glass:rgba(255,240,230,.18);
  --border:rgba(255,230,220,.25);
@@ -48,44 +48,72 @@ body.night{
 h1{margin-top:80px;font-size:3em;text-shadow:0 0 20px rgba(255,200,200,.6);}
 #countdown{font-size:1.6em;margin:15px 0;color:var(--accent);}
 .hideInitially { display:none; }
+
 /* GALLERY */
-.gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:15px; padding:30px; max-width:900px; margin:auto; background:var(--glass); backdrop-filter:blur(12px); border-radius:25px; border:1px solid var(--border); }
+.gallery{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+ gap:15px;
+ padding:20px;
+ max-width:900px;
+ margin:auto;
+ background:var(--glass);
+ backdrop-filter:blur(12px);
+ border-radius:25px;
+ border:1px solid var(--border);
+}
 .photo-card{position:relative;cursor:pointer}
 .photo-card input{display:none}
-.photo-card img{ width:100%; height:200px; object-fit:cover; border-radius:20px; transition:.4s; }
+.photo-card img{ width:100%; height:180px; object-fit:cover; border-radius:20px; transition:.4s; }
 .photo-card:hover img{transform:scale(1.05)}
 .photo-card input:checked + img{ box-shadow:0 0 25px var(--glow); border:2px solid var(--accent); }
-.overlay{ position:absolute; inset:0; background:rgba(30,10,10,.6); border-radius:20px; display:flex; align-items:center; justify-content:center; opacity:0; transition:.3s; font-style:italic; padding:15px; }
+.overlay{
+ position:absolute;
+ inset:0;
+ background:rgba(30,10,10,.6);
+ border-radius:20px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ opacity:0;
+ transition:.3s;
+ font-style:italic;
+ padding:10px;
+ text-align:center;
+}
 .photo-card input:checked~.overlay{opacity:1}
 .photo-card audio{display:none}
+
 /* MESSAGE */
-.message{ margin:40px auto; padding:30px; max-width:700px; background:var(--glass); border-radius:25px; border:1px solid var(--border); }
-.message p{line-height:1.7}
+.message{ margin:30px auto; padding:20px; max-width:90%; background:var(--glass); border-radius:25px; border:1px solid var(--border); }
+.message p{line-height:1.5}
 #secretMsg,#promiseText{ display:none; margin-top:15px; color:var(--accent); }
+
 /* TIMELINE */
-.timeline{ max-width:700px; margin:40px auto; background:var(--glass); padding:25px; border-radius:25px; border:1px solid var(--border); }
+.timeline{ max-width:90%; margin:30px auto; background:var(--glass); padding:20px; border-radius:25px; border:1px solid var(--border); }
 .timeline h3{color:var(--accent)}
 .fade{ opacity:0; transform:translateY(25px); transition:.8s ease; }
 .fade.show{opacity:1;transform:none}
-button{ background:transparent; border:1px solid var(--accent); color:var(--text); padding:10px 22px; border-radius:25px; cursor:pointer; }
-footer{margin:30px;color:var(--accent)}
+button{ background:transparent; border:1px solid var(--accent); color:var(--text); padding:10px 22px; border-radius:25px; cursor:pointer; font-size:1em; }
+footer{margin:20px;color:var(--accent); font-size:0.9em;}
+
 /* Candle + flame */
 .candle{
  position:absolute;
  bottom:40px;
- width:15px;
- height:50px;
+ width:12px;
+ height:40px;
  background:purple;
  border-radius:5px;
 }
 .flame{
  position:absolute;
- top:-21px;
- width:10px;
- height:20px;
+ top:-17px;
+ width:8px;
+ height:16px;
  background:#ffdf00;
  border-radius:70%;
- box-shadow:0 0 15px orange;
+ box-shadow:0 0 12px orange;
  animation:flameFlicker 0.3s infinite alternate;
 }
 @keyframes flameFlicker{
@@ -105,21 +133,39 @@ footer{margin:30px;color:var(--accent)}
 }
 #passwordBox{
  background:var(--glass);
- padding:30px 60px;
+ padding:20px 40px;
  border-radius:30px;
  border:2px solid var(--border);
  text-align:center;
+ width:90%;
+ max-width:400px;
 }
 #passwordBox input{
  padding:8px 12px;
  border-radius:10px;
  border:1px solid var(--accent);
  margin-top:10px;
+ width:80%;
+ font-size:1em;
 }
 #wrongPass{
  display:none;
  color:#ff9b9b;
  margin-top:10px;
+ font-size:0.9em;
+}
+
+/* MEDIA QUERIES FOR MOBILE */
+@media screen and (max-width:600px){
+ h1{font-size:2em;margin-top:50px;}
+ #countdown{font-size:1.2em;}
+ .photo-card img{height:140px;}
+ button{padding:8px 18px;font-size:0.9em;}
+ .message,.timeline{padding:15px;}
+ #cakeImg{width:80%;}
+ .candle{width:10px;height:35px;}
+ .flame{width:6px;height:12px;top:-14px;}
+ .heart{font-size:24px;}
 }
 </style>
 </head>
@@ -136,11 +182,10 @@ footer{margin:30px;color:var(--accent)}
  </div>
 </div>
 
-<!-- 💖 Love Popup -->
+<!-- LOVE POPUP -->
 <div id="lovePopup" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:10000;">
- <div style="background:var(--glass);padding:20px 80px;border-radius:50px;border:13px solid var(--border);text-align:center;color:var(--accent);font-size:1.5em;">
-  <p><b><i> Phele ye btta ? <br>
-Do you love me?</br></i></b> 🥺</p>
+ <div style="background:var(--glass);padding:15px 50px;border-radius:50px;border:10px solid var(--border);text-align:center;color:var(--accent);font-size:1.2em;">
+  <p><b><i>Do you love me?</i></b> 🥺</p>
   <div style="margin-top:10px;">
    <button id="yesBtn">Yes</button>
    <button id="noBtn" style="border-color:#D94A4A;color:#D94A4A;">No</button>
@@ -148,11 +193,10 @@ Do you love me?</br></i></b> 🥺</p>
  </div>
 </div>
 
-<!-- 🎂 Cake Overlay -->
+<!-- CAKE POPUP -->
 <div id="cakePopup" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7);flex-direction:column;justify-content:center;align-items:center;color:var(--accent);z-index:9999;">
  <div style="position:relative;">
   <img id="cakeImg" src="cake.png">
-  <!-- 6 candles -->
   <div id="candlesContainer" style="position:absolute;top:20px;left:50%;transform:translateX(-50%);width:220px;height:50px;">
     <div class="candle" style="left:0;"><div class="flame"></div></div>
     <div class="candle" style="left:36px;"><div class="flame"></div></div>
@@ -163,12 +207,10 @@ Do you love me?</br></i></b> 🥺</p>
   </div>
  </div>
 
- <!-- LONG HAPPY BIRTHDAY MESSAGE -->
- <p id="blowText" style="margin-top:20px;font-size:1.5em;display:none;">🎉Happy Birthday shonna🎉 <br> 
-❤️Bhagwan tujhe hamesha khush rakhe teri sariiii wishes puri kre❤️</br></p>
+ <p id="blowText" style="margin-top:20px;font-size:1.2em;display:none;">🎉Happy Birthday shonna🎉 <br>❤️Bhagwan tujhe hamesha khush rakhe teri wishes puri kre❤️</p>
 
  <div id="blowBtnContainer" style="margin-top:15px; display:none;">
-   <button id="blowBtn"> Tap here...then blow out the candle while making a wish. 🎂</button>
+   <button id="blowBtn">Tap here...then blow out the candle 🎂</button>
  </div>
  <div id="nextSurprise" style="margin-top:15px; display:none;">
    <p>Do you want to see the next surprise?</p>
@@ -189,8 +231,8 @@ Do you love me?</br></i></b> 🥺</p>
  <div id="countdown">A little surprise, just for you… 🎁</div>
 
  <div class="message fade">
-  <p onclick="document.getElementById('secretMsg').style.display='block'"> Tap here… there’s something I want you to know 💕 </p>
-  <div id="secretMsg"> Today isn’t just your birthday… it’s the day my favorite person was born ❤️ </div>
+  <p onclick="document.getElementById('secretMsg').style.display='block'">Tap here… there’s something I want you to know 💕 </p>
+  <div id="secretMsg">Today isn’t just your birthday… it’s the day my favorite person was born ❤️</div>
  </div>
 
  <div class="gallery fade">
@@ -214,27 +256,33 @@ Do you love me?</br></i></b> 🥺</p>
  </div>
 
  <div class="message fade">
-  <button onclick="document.getElementById('promiseText').style.display='block'"> One last thing… </button>
-  <div id="promiseText"> No matter what life brings, I promise to always choose you ❤️ </div>
+  <button onclick="document.getElementById('promiseText').style.display='block'">One last thing…</button>
+  <div id="promiseText">No matter what life brings, I promise to always choose you ❤️</div>
  </div>
 
  <footer>Made with all my love 💗</footer>
 </div>
 
 <script>
-// 🔐 PASSWORD LOGIC
-const secretPassword = "BirthdayGift_2026_HostNameKiranArya_21-01-2026"; // <-- CHANGE THIS
-document.getElementById("mainContent").style.display = "none";
-document.getElementById("lovePopup").style.display = "none";
-document.getElementById("cakePopup").style.display = "none";
+// 🔐 PASSWORD HASH LOGIC
+const PASSWORD_HASH = "6d3b2d4e9cbfb71474a3a689c3f042de7a23aa69a2f95d7d0721a5b447f4dd7e";
 
-function checkPassword(){
+async function sha256(text){
+ const enc = new TextEncoder().encode(text);
+ const buf = await crypto.subtle.digest("SHA-256", enc);
+ return Array.from(new Uint8Array(buf))
+             .map(b => b.toString(16).padStart(2, "0"))
+             .join("");
+}
+
+async function checkPassword(){
  const input = document.getElementById("passwordInput").value;
- if(input === secretPassword){
-   document.getElementById("passwordPopup").style.display="none"; // hide black overlay
-   document.getElementById("lovePopup").style.display="flex";      // show love popup
+ const hash = await sha256(input);
+ if(hash === PASSWORD_HASH){
+   document.getElementById("passwordPopup").style.display = "none";
+   document.getElementById("lovePopup").style.display = "flex";
  } else {
-   document.getElementById("wrongPass").style.display="block";
+   document.getElementById("wrongPass").style.display = "block";
  }
 }
 
@@ -251,7 +299,6 @@ for(let i=0;i<40;i++){
 // Gallery audio
 const audios = document.querySelectorAll("audio");
 const photoCards = document.querySelectorAll(".photo-card");
-
 photoCards.forEach((card, i) => {
   card.onclick = () => {
     audios.forEach((audio, j) => {
@@ -265,14 +312,8 @@ photoCards.forEach((card, i) => {
 });
 
 // Fade-in on scroll
-document.querySelectorAll('.fade').forEach(el=>{
- if(el.getBoundingClientRect().top < window.innerHeight){el.classList.add('show');}
-});
-window.addEventListener('scroll',()=>{
- document.querySelectorAll('.fade').forEach(el=>{
-  if(el.getBoundingClientRect().top < window.innerHeight-100){el.classList.add('show');}
- });
-});
+document.querySelectorAll('.fade').forEach(el=>{if(el.getBoundingClientRect().top < window.innerHeight){el.classList.add('show');}});
+window.addEventListener('scroll',()=>{document.querySelectorAll('.fade').forEach(el=>{if(el.getBoundingClientRect().top < window.innerHeight-100){el.classList.add('show');}});});
 
 // LOVE POPUP SEQUENCE
 window.onload = function() {
@@ -281,14 +322,12 @@ window.onload = function() {
  const mainContent = document.getElementById("mainContent");
  const yesBtn = document.getElementById("yesBtn");
  const noBtn = document.getElementById("noBtn");
-
  const blowBtnContainer = document.getElementById("blowBtnContainer");
  const blowBtn = document.getElementById("blowBtn");
  const blowText = document.getElementById("blowText");
  const nextSurprise = document.getElementById("nextSurprise");
  const nextYes = document.getElementById("nextYes");
  const nextNo = document.getElementById("nextNo");
-
  const candles = document.querySelectorAll(".candle");
  const flames = document.querySelectorAll(".flame");
 
@@ -299,12 +338,11 @@ window.onload = function() {
  }
 
  noBtn.onclick = function() {
-  document.body.innerHTML = "<h3 style='text-align:center;margin-top:20%;font-size:2em;color:#929f07'> Dffa ho ja 😒</h1>";
+  document.body.innerHTML = "<h3 style='text-align:center;margin-top:20%;font-size:2em;color:#929f07'> Dffa ho ja 😒</h3>";
  }
 
  blowBtn.onclick = function() {
   blowBtnContainer.style.display = "none";
-
   navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
    const ctx = new AudioContext();
    const analyser = ctx.createAnalyser();
@@ -319,10 +357,7 @@ window.onload = function() {
      candles.forEach(c=>c.style.display="none");
      flames.forEach(f=>f.style.display="none");
      blowText.style.display = "block";
-     setTimeout(()=>{
-      blowText.style.display = "none";
-      nextSurprise.style.display = "block";
-     },4000);
+     setTimeout(()=>{blowText.style.display = "none"; nextSurprise.style.display = "block";},4000);
     } else {
      requestAnimationFrame(detectBlow);
     }
@@ -341,9 +376,11 @@ window.onload = function() {
  nextNo.onclick = function() {
   nextSurprise.style.display="none";
   cakePopup.style.display="none";
-  document.body.innerHTML = "<h3 style='text-align:center;margin-top:20%;font-size:1em;color:#929f07'>kya soch kr No press kia .... ye check kra tha ki No krne se kya hoga 😒</h1>";
+  document.body.innerHTML = "<h3 style='text-align:center;margin-top:20%;font-size:1em;color:#929f07'>kya soch kr No press kia 😒</h3>";
  }
 }
 </script>
 </body>
 </html>
+
+
